@@ -43,7 +43,6 @@ System Settings first.
 - `--loop` — keep original speed and repeat the cut until the target duration is filled
   (the default stretches the cut to the target duration instead).
 - `--bitrate MBPS` — default `12` (Apple's aerials are ~10–12 Mbps 4K).
-- `--reload` — restart `WallpaperAgent` afterwards so the new video is picked up.
 
 The result is verified for the `tscl`/`tsas` sample groups *before* it replaces the
 existing wallpaper, so a failed run never clobbers a working one.
@@ -156,12 +155,10 @@ looping doesn't happen in normal use:
 **Option A — VideoPaper (or similar helper app):** just import `out.mov`.
 
 **Option B — manual:** replace the `.mov` the aerial system already references under
-`~/Library/Application Support/com.apple.wallpaper/aerials/videos/<UUID>.mov`, then
-reload the agent:
+`~/Library/Application Support/com.apple.wallpaper/aerials/videos/<UUID>.mov`.
 
-```bash
-pkill -x WallpaperAgent
-```
+> **Don't restart `WallpaperAgent`** (e.g. `pkill -x WallpaperAgent`) after replacing the
+> file: macOS then re-downloads Apple's original video and overwrites yours.
 
 ## Verify it worked
 

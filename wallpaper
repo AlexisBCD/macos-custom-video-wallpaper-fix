@@ -112,7 +112,6 @@ def make_parser() -> argparse.ArgumentParser:
     )
     m.add_argument("--bitrate", type=int, default=12, metavar="MBPS", help="default: 12")
     m.add_argument("--cache-dir", type=Path, default=DEFAULT_CACHE, help=f"downloads; default: {DEFAULT_CACHE}")
-    m.add_argument("--reload", action="store_true", help="restart WallpaperAgent when done")
     return m
 
 
@@ -317,11 +316,6 @@ def make(args: argparse.Namespace) -> None:
         staged.replace(target)
 
     log(f"Installed: {target}")
-    if args.reload:
-        subprocess.run(["pkill", "-x", "WallpaperAgent"])
-        log("Restarted WallpaperAgent")
-    else:
-        log("Run `pkill -x WallpaperAgent` (or re-run with --reload) to pick it up.")
 
 
 def main() -> int:
