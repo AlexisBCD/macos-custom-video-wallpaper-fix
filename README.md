@@ -160,6 +160,9 @@ looping doesn't happen in normal use:
 > **Don't restart `WallpaperAgent`** (e.g. `pkill -x WallpaperAgent`) after replacing the
 > file: macOS then re-downloads Apple's original video and overwrites yours.
 
+It is unclear how to make macOS pick up the replaced video straight away. Things to try
+(untested): switch to a different wallpaper in System Settings and back, or just wait.
+
 ## Verify it worked
 
 ```bash
